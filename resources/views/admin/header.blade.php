@@ -19,6 +19,11 @@
 
 
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
 
     @yield('css')
 
@@ -69,7 +74,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Dashboard Product</h6>
                         <a class="collapse-item" href="#">Produk</a>
-                        <a class="collapse-item" href="#">Kategori</a>
+                        <a class="collapse-item" href="{{ route('categories.index') }}">Kategori</a>
 
 
                     </div>
@@ -367,6 +372,18 @@
         <!-- Custom scripts for all pages-->
         <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- DataTables JS -->
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+
+        <!-- Optional: Language Localization -->
+        <!-- <script src="https://cdn.datatables.net/plug-ins/1.13.6/i18n/Indonesian.json"></script> -->
 
 </body>
 
