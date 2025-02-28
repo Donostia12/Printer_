@@ -12,13 +12,13 @@
     <title>LUVI Travel Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('assets/admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
 
-    <link href="{{ asset('assets/admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     @yield('css')
 
@@ -93,7 +93,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom AirPlanes:</h6>
-                        <a class="collapse-item" href="{{ route('airplane.index') }}"> List Airport</a>
+                        <a class="collapse-item" href="#"> List Airport</a>
                     </div>
                 </div>
             </li>
@@ -252,7 +252,7 @@
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
                                         <img class="rounded-circle"
-                                            src="{{ asset('assets/admin/img/undraw_profile_1.svg') }}" alt="...">
+                                            src="{{ asset('assets/img/undraw_profile_1.svg') }}" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -264,7 +264,7 @@
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
                                         <img class="rounded-circle"
-                                            src="{{ asset('assets/admin/img/undraw_profile_2.svg') }}" alt="...">
+                                            src="{{ asset('assets/img/undraw_profile_2.svg') }}" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -276,7 +276,7 @@
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
                                         <img class="rounded-circle"
-                                            src="{{ asset('assets/admin/img/undraw_profile_3.svg') }}" alt="...">
+                                            src="{{ asset('assets/img/undraw_profile_3.svg') }}" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -311,7 +311,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="{{ asset('assets/admin/img/undraw_profile.svg') }}">
+                                    src="{{ asset('assets/img/undraw_profile.svg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -380,14 +380,14 @@
         </div>
         @yield('scripts')
         <!-- Bootstrap core JavaScript-->
-        <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
         <!-- Core plugin JavaScript-->
-        <script src="{{ asset('assets/admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="{{ asset('assets/admin/js/sb-admin-2.min.js') }}"></script>
+        <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
 
 </body>
