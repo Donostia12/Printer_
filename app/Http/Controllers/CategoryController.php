@@ -73,7 +73,7 @@ class CategoryController extends Controller
     {
         // Validasi data input
         $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
         ]);
 
         // Mengambil kategori yang akan diperbarui

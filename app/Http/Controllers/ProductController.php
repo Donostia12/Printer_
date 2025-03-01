@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,7 @@ class ProductController extends Controller
     {
         // Mengambil semua data produk beserta kategorinya
         $products = Product::with('categories')->get();
-        return view('products.index', compact('products'));
+        return view('admin.products.index', compact('products'));
     }
 
 
@@ -26,7 +27,7 @@ class ProductController extends Controller
     {
         // Mengambil semua kategori untuk ditampilkan dalam form
         $categories = Category::all();
-        return view('products.create', compact('categories'));
+        return view('admin.products.create', compact('categories'));
     }
 
 
@@ -38,18 +39,17 @@ class ProductController extends Controller
         // Validasi data input
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'harga' => 'required|numeric',
+            'price' => 'required|numeric',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'categories' => 'required|array',
             'categories.*' => 'exists:categories,id',
         ]);
 
-        // Mengunggah gambar jika ada
+        // Menyimpan gambar ke dalam storage/images
         if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images/products'), $imageName);
-            $validatedData['image'] = 'images/products/' . $imageName;
+            $imagePath = $request->file('image')->store('images/products', 'public');
+            $validatedData['image'] = $imagePath;
         }
 
         // Membuat produk baru
@@ -63,6 +63,8 @@ class ProductController extends Controller
     }
 
 
+
+
     /**
      * Display the specified resource.
      */
@@ -70,7 +72,7 @@ class ProductController extends Controller
     {
         // Mengambil data produk beserta kategorinya
         $product = Product::with('categories')->findOrFail($id);
-        return view('products.show', compact('product'));
+        return view('admin.products.show', compact('product'));
     }
 
 
@@ -81,7 +83,7 @@ class ProductController extends Controller
     {
         $product = Product::with('categories')->findOrFail($id);
         $categories = Category::all();
-        return view('products.edit', compact('product', 'categories'));
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
 
@@ -93,7 +95,7 @@ class ProductController extends Controller
         // Validasi data input
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'harga' => 'required|numeric',
+            'price' => 'required|numeric',
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'categories' => 'required|array',
@@ -102,15 +104,15 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-        // Mengunggah gambar jika ada
+        // Mengunggah gambar baru jika ada
         if ($request->hasFile('image')) {
             // Hapus gambar lama jika ada
-            if ($product->image && file_exists(public_path($product->image))) {
-                unlink(public_path($product->image));
+            if ($product->image && Storage::exists($product->image)) {
+                Storage::delete($product->image);
             }
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images/products'), $imageName);
-            $validatedData['image'] = 'images/products/' . $imageName;
+
+            $imagePath = $request->file('image')->store('images/products', 'public');
+            $validatedData['image'] = $imagePath;
         }
 
         // Memperbarui data produk
@@ -122,6 +124,8 @@ class ProductController extends Controller
         // Redirect ke halaman daftar produk dengan pesan sukses
         return redirect()->route('products.index')->with('success', 'Produk berhasil diperbarui!');
     }
+
+
 
 
     /**
