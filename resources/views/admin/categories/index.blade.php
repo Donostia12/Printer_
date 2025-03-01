@@ -45,6 +45,7 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#categories-table').DataTable({

@@ -15,7 +15,7 @@ class CartController extends Controller
     {
         // Hanya admin yang dapat melihat daftar pemesanan
         $cards = Card::with('product')->get();
-        return view('admin.cards.index', compact('cards'));
+        return view('admin.carts.index', compact('cards'));
     }
 
     /**

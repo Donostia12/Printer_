@@ -72,7 +72,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Dashboard Product</h6>
+                        <h6 class="collapse-header">Dashboard Produk</h6>
                         <a class="collapse-item" href="{{ route('products.index') }}">Produk</a>
                         <a class="collapse-item" href="{{ route('categories.index') }}">Kategori</a>
 
@@ -89,8 +89,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Cart</h6>
-                        <a class="collapse-item" href="{{ route('cart.index') }}">List Card</a>
+                        <h6 class="collapse-header">Cart Pesanan</h6>
+                        <a class="collapse-item" href="{{ route('carts.index') }}">List Carts Pesanan</a>
                     </div>
                 </div>
             </li>
@@ -348,19 +348,29 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Apakah Anda Yakin Untuk Keluar?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-body">
+                        Tekan tombol Logout di bawah jika Anda siap untuk mengakhiri sesi Anda saat ini.
+                    </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
+                            style="display: none;">
+                            @csrf
+                        </form>
+                        <button class="btn btn-primary"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
         @yield('scripts')
         <!-- Bootstrap core JavaScript-->
         <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
@@ -373,10 +383,7 @@
         <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
         <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-        <!-- Bootstrap JS -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <!-- DataTables JS -->
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
