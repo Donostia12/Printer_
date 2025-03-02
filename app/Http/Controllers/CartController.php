@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\Carts;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class CartController extends Controller
     public function index()
     {
         // Hanya admin yang dapat melihat daftar pemesanan
-        $cards = Card::with('product')->get();
+        $cards = Carts::with('product')->get();
         return view('admin.carts.index', compact('cards'));
     }
 
@@ -25,7 +26,7 @@ class CartController extends Controller
     public function create()
     {
         $products = Product::all();
-        return view('cards.create', compact('products'));
+        return view('carts.create', compact('products'));
     }
 
     /**
@@ -51,7 +52,7 @@ class CartController extends Controller
         $validatedData['status'] = 'pending';
 
         // Membuat pemesanan baru
-        $card = Card::create($validatedData);
+        $card = Carts::create($validatedData);
 
         // Redirect ke halaman konfirmasi atau detail pemesanan
         return redirect()->route('cards.show', $card->id)->with('success', 'Pemesanan Anda berhasil dibuat!');
@@ -62,7 +63,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        $card = Card::with('product')->findOrFail($id);
+        $card = Carts::with('product')->findOrFail($id);
         return view('cards.show', compact('card'));
     }
 
