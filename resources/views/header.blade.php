@@ -68,6 +68,8 @@
         </div>
     </section>
 
+    @yield('content')
+
     <!-- Section Tentang Kami -->
     <section class="section" id="tentang">
         <div class="container">
