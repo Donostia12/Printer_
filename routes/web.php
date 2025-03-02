@@ -16,7 +16,7 @@ Route::resources([
 ]);
 
 Route::get('/', function () {
-    return view('header');
+    return view('home');
 });
 
 Route::get('admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
