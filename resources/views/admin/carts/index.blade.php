@@ -43,7 +43,7 @@
                         </td>
                         <td>{{ $card->created_at->format('d-m-Y H:i') }}</td>
                         <td>
-                            <a href="{{ route('cards.show', $card->id) }}" class="btn btn-info btn-sm">Detail</a>
+                            {{-- <a href="{{ route('cards.show', $card->id) }}" class="btn btn-info btn-sm">Detail</a> --}}
                             <!-- Tambahkan aksi lain seperti Edit atau Hapus jika diperlukan -->
                         </td>
                     </tr>

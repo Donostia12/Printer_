@@ -31,6 +31,7 @@ class IndexController extends Controller
             'design_file'      => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
 
+
         if ($request->hasFile('design_file')) {
             $filePath = $request->file('design_file')->store('designs', 'public');
             $validatedData['design_file'] = $filePath;
@@ -42,6 +43,6 @@ class IndexController extends Controller
         $cart = Carts::create($validatedData);
 
 
-        return redirect()->route('home')->with('success', 'Pemesanan Anda berhasil dibuat!');
+        return redirect()->route('home', $cart->id)->with('success', 'Pemesanan Anda berhasil dibuat!');
     }
 }

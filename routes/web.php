@@ -7,14 +7,13 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\AdminMiddlerware;
+
 use Illuminate\Support\Facades\Route;
 
 
 Route::resources([
     'categories' => CategoryController::class
 ]);
-
-
 Route::get('/', [IndexController::class, 'index'])->name('home');
 Route::get('/carts/form', [IndexController::class, 'carts'])->name('carts.form');
 Route::post('/carts/store', [IndexController::class, 'store_carts'])->name('carts.form.store');

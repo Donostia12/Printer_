@@ -26,14 +26,14 @@
                 @endif
 
 
-                <!-- Harga -->
+
                 <p><strong>Harga:</strong> Rp {{ number_format($product->price, 2) }}</p>
 
-                <!-- Deskripsi -->
+
                 <p><strong>Deskripsi:</strong></p>
                 <p>{{ $product->description ?? 'Tidak ada deskripsi untuk produk ini.' }}</p>
 
-                <!-- Kategori -->
+
                 <p><strong>Kategori:</strong></p>
                 @if ($product->categories->count() > 0)
                     <ul>

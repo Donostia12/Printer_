@@ -31,17 +31,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi data input
+
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        // Membuat kategori baru
+
         Category::create([
             'name' => $validatedData['name'],
         ]);
 
-        // Redirect ke halaman daftar kategori dengan pesan sukses
+
         return redirect()->route('categories.index')->with('success', 'Kategori berhasil ditambahkan!');
     }
 
@@ -71,15 +71,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validasi data input
+
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        // Mengambil kategori yang akan diperbarui
+
         $category = Category::findOrFail($id);
 
-        // Memperbarui data kategori
+
         $category->update($validatedData);
 
         return redirect()->route('categories.index')->with('success', 'Kategori berhasil diperbarui!');

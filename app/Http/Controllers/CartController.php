@@ -42,19 +42,18 @@ class CartController extends Controller
             'design_file' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
 
-        // Mengunggah file desain
+
         if ($request->hasFile('design_file')) {
             $filePath = $request->file('design_file')->store('designs', 'public');
             $validatedData['design_file'] = $filePath;
         }
 
-        // Set status awal pemesanan
+
         $validatedData['status'] = 'pending';
 
-        // Membuat pemesanan baru
         $card = Carts::create($validatedData);
 
-        // Redirect ke halaman konfirmasi atau detail pemesanan
+
         return redirect()->route('cards.show', $card->id)->with('success', 'Pemesanan Anda berhasil dibuat!');
     }
 

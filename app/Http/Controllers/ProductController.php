@@ -14,7 +14,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // Mengambil semua data produk beserta kategorinya
         $products = Product::with('categories')->get();
         return view('admin.products.index', compact('products'));
     }
@@ -25,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // Mengambil semua kategori untuk ditampilkan dalam form
+
         $categories = Category::all();
         return view('admin.products.create', compact('categories'));
     }
@@ -46,19 +45,19 @@ class ProductController extends Controller
             'categories.*' => 'exists:categories,id',
         ]);
 
-        // Menyimpan gambar ke dalam storage/images
+
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images/products', 'public');
             $validatedData['image'] = $imagePath;
         }
 
-        // Membuat produk baru
+
         $product = Product::create($validatedData);
 
-        // Menghubungkan produk dengan kategori
+
         $product->categories()->attach($validatedData['categories']);
 
-        // Redirect ke halaman daftar produk dengan pesan sukses
+
         return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
@@ -92,7 +91,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validasi data input
+
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
@@ -104,9 +103,9 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-        // Mengunggah gambar baru jika ada
+
         if ($request->hasFile('image')) {
-            // Hapus gambar lama jika ada
+
             if ($product->image && Storage::exists($product->image)) {
                 Storage::delete($product->image);
             }
@@ -115,13 +114,11 @@ class ProductController extends Controller
             $validatedData['image'] = $imagePath;
         }
 
-        // Memperbarui data produk
         $product->update($validatedData);
 
-        // Sinkronisasi kategori
+
         $product->categories()->sync($validatedData['categories']);
 
-        // Redirect ke halaman daftar produk dengan pesan sukses
         return redirect()->route('products.index')->with('success', 'Produk berhasil diperbarui!');
     }
 
@@ -135,18 +132,18 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Hapus gambar jika ada
+
         if ($product->image && file_exists(public_path($product->image))) {
             unlink(public_path($product->image));
         }
 
-        // Menghapus relasi dengan kategori
+
         $product->categories()->detach();
 
-        // Menghapus produk
+
         $product->delete();
 
-        // Redirect ke halaman daftar produk dengan pesan sukses
+
         return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus!');
     }
 }
