@@ -28,4 +28,6 @@ Route::middleware([AdminMiddlerware::class])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('products', ProductController::class);
     Route::resource('carts', CartController::class);
+    Route::get('admin/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
+    Route::get('testimonial/{id}', [TestimonialController::class, 'status'])->name('testimonial.status');
 });

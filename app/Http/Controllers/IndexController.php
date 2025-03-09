@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carts;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\testimonial;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -12,8 +13,9 @@ class IndexController extends Controller
     public function index()
     {
         $categories = Category::with('products')->get();
+        $testimonial = testimonial::where('status', 'active')->get();
 
-        return view('home', compact('categories'));
+        return view('home', compact('categories', 'testimonial'));
     }
 
     public function carts()

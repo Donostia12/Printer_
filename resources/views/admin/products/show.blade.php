@@ -25,8 +25,6 @@
                     <p><i>Gambar produk tidak tersedia</i></p>
                 @endif
 
-
-
                 <p><strong>Harga:</strong> Rp {{ number_format($product->price, 2) }}</p>
 
 

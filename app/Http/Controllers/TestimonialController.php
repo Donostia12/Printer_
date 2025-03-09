@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\testimonial;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
 {
     public function store(Request $request)
     {
-        // Validasi data input
+
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'desc' => 'required|string',
@@ -26,5 +27,23 @@ class TestimonialController extends Controller
         testimonial::create($validatedData);
 
         return redirect()->back()->with('success', 'Testimonial Anda berhasil dikirim!');
+    }
+    public function index()
+    {
+
+        $testimonial = testimonial::all();
+        return view('admin.testimonial.index', compact('testimonial'));
+    }
+    public function status($id)
+    {
+        $testimonial = testimonial::find($id);
+        if ($testimonial->status == "off") {
+            $testimonial->status = "active";
+        } else {
+            $testimonial->status = "off";
+        }
+
+        $testimonial->save();
+        return redirect()->back()->with('success', 'Testimonial Anda berhasil di update!');
     }
 }

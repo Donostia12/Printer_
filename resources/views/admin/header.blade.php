@@ -74,7 +74,7 @@
                         <h6 class="collapse-header">Dashboard Produk</h6>
                         <a class="collapse-item" href="{{ route('products.index') }}">Produk</a>
                         <a class="collapse-item" href="{{ route('categories.index') }}">Kategori</a>
-
+                        <a class="collapse-item" href="{{ route('testimonial.index') }}">Testimonial</a>
 
                     </div>
                 </div>
@@ -94,11 +94,6 @@
                 </div>
             </li>
 
-
-
-            <!-- Divider -->
-
-            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -319,7 +314,7 @@
 
 
             </div>
-            <!-- End of Content Wrapper -->
+
 
         </div>
         <!-- End of Page Wrapper -->
@@ -369,15 +364,8 @@
         <!-- Custom scripts for all pages-->
         <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
-        <!-- jQuery -->
-
-
-        <!-- DataTables JS -->
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
-
-        <!-- Optional: Language Localization -->
-        <!-- <script src="https://cdn.datatables.net/plug-ins/1.13.6/i18n/Indonesian.json"></script> -->
 
 </body>
 

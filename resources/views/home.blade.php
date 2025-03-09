@@ -124,47 +124,21 @@
             <div id="carouselTestimoni" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <!-- Testimoni 1 -->
-                    <div class="carousel-item active">
-                        <div class="d-flex justify-content-center">
-                            <div class="col-md-8 text-center">
-                                <img src="{{ asset('images/testimoni1.jpg') }}" class="rounded-circle mb-4"
-                                    alt="Testimoni 1" width="100" height="100">
-                                <blockquote class="blockquote">
-                                    <p class="mb-4">"Pelayanan cepat dan hasil cetakan sangat memuaskan!"</p>
-                                    <footer class="blockquote-footer">Andi, <cite title="Perusahaan ABC">Perusahaan
-                                            ABC</cite></footer>
-                                </blockquote>
+                    @foreach ($testimonial as $item)
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-center">
+                                <div class="col-md-8 text-center">
+                                    <img src="{{ asset('storage/' . $item->image) }}" class="rounded-circle mb-4"
+                                        alt="Testimoni 1" width="100" height="100">
+                                    <blockquote class="blockquote">
+                                        <p class="mb-4">{{ $item->desc }}</p>
+                                        <footer class="blockquote-footer">{{ $item->name }}</footer>
+                                    </blockquote>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Testimoni 2 -->
-                    <div class="carousel-item">
-                        <div class="d-flex justify-content-center">
-                            <div class="col-md-8 text-center">
-                                <img src="{{ asset('images/testimoni2.jpg') }}" class="rounded-circle mb-4"
-                                    alt="Testimoni 2" width="100" height="100">
-                                <blockquote class="blockquote">
-                                    <p class="mb-4">"Harga terjangkau dengan kualitas terbaik."</p>
-                                    <footer class="blockquote-footer">Budi, <cite title="Startup XYZ">Startup XYZ</cite>
-                                    </footer>
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimoni 3 -->
-                    <div class="carousel-item">
-                        <div class="d-flex justify-content-center">
-                            <div class="col-md-8 text-center">
-                                <img src="{{ asset('images/testimoni3.jpg') }}" class="rounded-circle mb-4"
-                                    alt="Testimoni 3" width="100" height="100">
-                                <blockquote class="blockquote">
-                                    <p class="mb-4">"Tim yang profesional dan sangat membantu."</p>
-                                    <footer class="blockquote-footer">Citra, <cite title="Event Organizer DEF">Event
-                                            Organizer DEF</cite></footer>
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
                 <!-- Navigasi -->
                 <a class="carousel-control-prev" href="#carouselTestimoni" role="button" data-slide="prev">
