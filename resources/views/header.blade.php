@@ -73,22 +73,23 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#beranda">Beranda</a>
+                        <a class="nav-link" href="{{ route('home') }}#beranda">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#tentang">Tentang Kami</a>
+                        <a class="nav-link" href="{{ route('home') }}#tentang">Tentang</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#produk">Produk</a>
+                        <a class="nav-link" href="{{ route('home') }}#layanan">Layanan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#pemesanan">Pemesanan</a>
+                        <a class="nav-link" href="{{ route('home') }}#pemesanan">Pemesanan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#kontak">Kontak Kami</a>
+                        <a class="nav-link" href="{{ route('home') }}#kontak">Kontak Kami</a>
                     </li>
                 </ul>
             </div>
+
         </div>
     </nav>
 
@@ -96,7 +97,7 @@
 
     <footer class="footer">
         <div class="container text-center">
-            <p>&copy; 2023 PercetakanKU. All rights reserved.</p>
+            <p>&copy; 2025 Percetakan. All rights reserved.</p>
         </div>
     </footer>
 
@@ -105,28 +106,27 @@
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Smooth Scrolling dan Sticky Navbar -->
     <script>
-        // Menambahkan kelas 'navbar-scrolled' saat menggulir
-        $(document).ready(function() {
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 50) {
-                    $('.navbar-custom').addClass('navbar-scrolled');
-                } else {
-                    $('.navbar-custom').removeClass('navbar-scrolled');
-                }
-            });
+        // $(document).ready(function() {
+        //     $(window).scroll(function() {
+        //         if ($(this).scrollTop() > 50) {
+        //             $('.navbar-custom').addClass('navbar-scrolled');
+        //         } else {
+        //             $('.navbar-custom').removeClass('navbar-scrolled');
+        //         }
+        //     });
 
-            // Smooth scrolling untuk navigasi
-            $('a.nav-link').on('click', function(event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    const hash = this.hash;
+        //     // Smooth scrolling untuk navigasi
+        //     $('a.nav-link').on('click', function(event) {
+        //         if (this.hash !== "") {
+        //             event.preventDefault();
+        //             const hash = this.hash;
 
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top - 70
-                    }, 800);
-                }
-            });
-        });
+        //             $('html, body').animate({
+        //                 scrollTop: $(hash).offset().top - 70
+        //             }, 800);
+        //         }
+        //     });
+        // });
     </script>
 
 </body>

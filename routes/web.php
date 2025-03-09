@@ -21,7 +21,7 @@ Route::get('admin/login', [AdminController::class, 'showLoginForm'])->name('admi
 Route::post('admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
 Route::post('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
-// Group route untuk admin yang terproteksi middleware
+
 Route::middleware([AdminMiddlerware::class])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('products', ProductController::class);

@@ -83,11 +83,11 @@
     </section>
 
     <!-- Jenis Layanan -->
-    <section class="section bg-light py-5" id="produk">
+    <section class="section bg-light py-5" id="layanan">
         <div class="container">
             <h2 class="text-center mb-5">Layanan Kami</h2>
             <div class="row">
-                <!-- Layanan 1 -->
+
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <img src="{{ asset('images/layanan1.jpg') }}" class="card-img-top" alt="Percetakan Digital">
@@ -98,28 +98,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- Layanan 2 -->
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="{{ asset('images/layanan2.jpg') }}" class="card-img-top" alt="Cetak Offset">
-                        <div class="card-body">
-                            <h5 class="card-title">Cetak Offset</h5>
-                            <p class="card-text">Solusi cetak massal dengan harga yang kompetitif.</p>
-                            <a href="#" class="btn btn-outline-primary">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Layanan 3 -->
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="{{ asset('images/layanan3.jpg') }}" class="card-img-top" alt="Merchandise Kustom">
-                        <div class="card-body">
-                            <h5 class="card-title">Merchandise Kustom</h5>
-                            <p class="card-text">Buat merchandise unik dengan desain Anda sendiri.</p>
-                            <a href="#" class="btn btn-outline-primary">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
+
+                @foreach ($layanan as $item)
+                @endforeach
             </div>
         </div>
     </section>
