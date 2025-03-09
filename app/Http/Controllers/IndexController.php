@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carts;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -10,8 +11,9 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        return view('home', compact('products'));
+        $categories = Category::with('products')->get();
+
+        return view('home', compact('categories'));
     }
 
     public function carts()

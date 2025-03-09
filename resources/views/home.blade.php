@@ -9,6 +9,8 @@
             </button>
         </div>
     @endif
+
+
     <!-- Banner Promosi -->
     <section id="beranda">
         <div id="carouselBanner" class="carousel slide" data-ride="carousel">
@@ -86,24 +88,33 @@
     <section class="section bg-light py-5" id="layanan">
         <div class="container">
             <h2 class="text-center mb-5">Layanan Kami</h2>
-            <div class="row">
 
-
-
-                @foreach ($products as $item)
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="{{ asset('images/layanan1.jpg') }}" class="card-img-top" alt="Percetakan Digital">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $item->name }}</h5>
-                                <p class="card-text">{{ $item->description }}</p>
-                                <a href="{{ route('carts.form') }}" class="btn btn-outline-primary">Selengkapnya</a>
+            <!-- Looping tiap kategori -->
+            @foreach ($categories as $category)
+                <div class="mb-5">
+                    <h3 class="mb-4">{{ $category->name }}</h3>
+                    <div class="row">
+                        @foreach ($category->products as $product)
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
+                                        alt="{{ $product->name }}" style="height: 200px; object-fit: cover; width: 100%;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $product->name }}</h5>
+                                        <p class="card-text">{{ $product->description }}</p>
+                                        <a href="{{ route('carts.form') }}"
+                                            class="btn btn-outline-primary">Selengkapnya</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
+    </section>
+
+
     </section>
 
     <!-- Testimoni Pelanggan -->
@@ -197,23 +208,39 @@
                     <p>info@sariprint.com</p>
                 </div>
                 <div class="col-md-6">
-                    <h5>Formulir Kontak</h5>
-                    <form>
+                    <h5>Formulir Testimonial</h5>
+                    <form action="{{ route('testimonial.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        <!-- Nama -->
                         <div class="form-group">
                             <label for="inputName">Nama</label>
-                            <input type="text" class="form-control" id="inputName" placeholder="Nama Anda">
+                            <input type="text" class="form-control" id="inputName" name="name"
+                                placeholder="Nama Anda" required>
                         </div>
+
+                        <!-- Deskripsi -->
                         <div class="form-group">
-                            <label for="inputEmail">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email Anda">
+                            <label for="inputDesc">Deskripsi</label>
+                            <textarea class="form-control" id="inputDesc" name="desc" rows="3" placeholder="Isi Testimonial Anda"
+                                required></textarea>
                         </div>
+
+                        <!-- Gambar -->
                         <div class="form-group">
-                            <label for="inputMessage">Pesan</label>
-                            <textarea class="form-control" id="inputMessage" rows="3" placeholder="Pesan Anda"></textarea>
+                            <label for="inputImage">Unggah Foto</label>
+                            <input type="file" class="form-control-file" id="inputImage" name="image"
+                                accept="image/*" required>
+                            <small class="form-text text-muted">Format file yang didukung: jpg, jpeg, png. Maksimum
+                                2MB.</small>
                         </div>
-                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+
+                        <!-- Tombol Submit -->
+                        <button type="submit" class="btn btn-primary">Kirim Testimonial</button>
+                        <a href="{{ url('/') }}" class="btn btn-secondary">Batal</a>
                     </form>
                 </div>
+
             </div>
         </div>
     </section>

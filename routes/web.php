@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Middleware\AdminMiddlerware;
 
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,7 @@ Route::post('/carts/store', [IndexController::class, 'store_carts'])->name('cart
 Route::get('admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('admin/login', [AdminController::class, 'login'])->name('admin.login.submit');
 Route::post('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+Route::post('testimonial/store', [TestimonialController::class, 'store'])->name('testimonial.store');
 
 
 Route::middleware([AdminMiddlerware::class])->group(function () {
