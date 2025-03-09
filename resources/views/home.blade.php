@@ -88,18 +88,19 @@
             <h2 class="text-center mb-5">Layanan Kami</h2>
             <div class="row">
 
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="{{ asset('images/layanan1.jpg') }}" class="card-img-top" alt="Percetakan Digital">
-                        <div class="card-body">
-                            <h5 class="card-title">Percetakan Digital</h5>
-                            <p class="card-text">Cetak dokumen Anda dengan cepat dan berkualitas tinggi.</p>
-                            <a href="#" class="btn btn-outline-primary">Selengkapnya</a>
+
+
+                @foreach ($products as $item)
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="{{ asset('images/layanan1.jpg') }}" class="card-img-top" alt="Percetakan Digital">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $item->name }}</h5>
+                                <p class="card-text">{{ $item->description }}</p>
+                                <a href="{{ route('carts.form') }}" class="btn btn-outline-primary">Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                @foreach ($layanan as $item)
                 @endforeach
             </div>
         </div>
