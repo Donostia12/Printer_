@@ -14,12 +14,16 @@
         <table class="table table-bordered table-striped" id="orders-table">
             <thead class="thead-dark">
                 <tr>
-                    <th>ID Pemesanan</th>
+                    <th>id</th>
                     <th>Produk</th>
                     <th>Jumlah</th>
                     <th>Bahan</th>
                     <th>Status</th>
-                    <th>Tanggal Pemesanan</th>
+                    <th>Nama</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Image</th>
+                    <th>Date</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -41,9 +45,15 @@
                                 <span class="badge badge-primary">{{ ucfirst($item->status) }}</span>
                             @endif
                         </td>
-                        <td>{{ $item->created_at->format('d-m-Y H:i') }}</td>
+
+                        <td>{{ $item->customer_name }}</td>
+                        <td>{{ $item->customer_phone }}</td>
+                        <td>{{ $item->customer_email }}</td>
+                        <td><img src="{{ asset('storage/' . $item->design_file) }}" alt="" srcset=""
+                                style="height: 100px; width: 100px;"></td>
+                        <td> {{ \Carbon\Carbon::parse($item->created_at->format('d-m-Y H:i'))->format('d M Y') }}</td>
                         <td>
-                            <a href="{{ route('carts.show', $item->id) }}" class="btn btn-info btn-sm">Detail</a>
+                            <a href="{{ route('carts.show', $item->id) }}" class="btn btn-info btn-sm">Update Status</a>
                         </td>
                     </tr>
                 @endforeach
