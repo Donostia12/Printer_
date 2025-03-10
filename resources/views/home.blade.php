@@ -157,14 +157,14 @@
     <section class="section bg-light py-5" id="sosial">
         <div class="container text-center">
             <h2 class="mb-5">Ikuti Kami di Media Sosial</h2>
-            <a href="https://www.facebook.com/sariprint" class="btn btn-primary btn-lg mx-2" target="_blank"><i
-                    class="fab fa-facebook-f"></i> Facebook</a>
-            <a href="https://www.instagram.com/sariprint" class="btn btn-danger btn-lg mx-2" target="_blank"><i
-                    class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.twitter.com/sariprint" class="btn btn-info btn-lg mx-2" target="_blank"><i
-                    class="fab fa-twitter"></i> Twitter</a>
-            <a href="https://www.linkedin.com/company/sariprint" class="btn btn-dark btn-lg mx-2" target="_blank"><i
-                    class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="#" class="btn btn-primary btn-lg mx-2" target="_blank"><i class="fab fa-facebook-f"></i>
+                Facebook</a>
+            <a href="#" class="btn btn-danger btn-lg mx-2" target="_blank"><i class="fab fa-instagram"></i>
+                Instagram</a>
+            <a href="#" class="btn btn-info btn-lg mx-2" target="_blank"><i class="fab fa-twitter"></i>
+                Twitter</a>
+            <a href="#" class="btn btn-dark btn-lg mx-2" target="_blank"><i class="fab fa-linkedin-in"></i>
+                LinkedIn</a>
         </div>
     </section>
 
