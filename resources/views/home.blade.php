@@ -36,9 +36,9 @@
                     <img src="{{ asset('images/Foto-Utama.jpg') }}" class="d-block w-100 img-fluid" alt="Banner 2"
                         style="max-height: 500px;">
                     <div class="carousel-caption d-none d-md-block">
-                        <h2>Promo Spesial</h2>
-                        <p>Dapatkan diskon hingga 20% untuk pemesanan pertama Anda!</p>
-                        <a href="#pemesanan" class="btn btn-danger btn-lg">Lihat Promo</a>
+                        <h2>Ikuti kami di Sosial Media</h2>
+                        <p>Silahkan Check Sosoal Media Kami! dan Check Testimonial kami</p>
+                        <a href="#testimoni" class="btn btn-danger btn-lg">ayo jelajahi</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -125,7 +125,7 @@
                 <div class="carousel-inner">
                     <!-- Testimoni 1 -->
                     @foreach ($testimonial as $item)
-                        <div class="carousel-item active">
+                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                             <div class="d-flex justify-content-center">
                                 <div class="col-md-8 text-center">
                                     <img src="{{ asset('storage/' . $item->image) }}" class="rounded-circle mb-4"
@@ -230,4 +230,29 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar-custom').addClass('navbar-scrolled');
+                } else {
+                    $('.navbar-custom').removeClass('navbar-scrolled');
+                }
+            });
+
+            $('a.nav-link').on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    const hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top - 70
+                    }, 800);
+                }
+            });
+        });
+    </script>
 @endsection

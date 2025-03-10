@@ -87,6 +87,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}#kontak">Kontak Kami</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}#testimoni">Testimoni</a>
+                    </li>
                 </ul>
             </div>
 
@@ -105,30 +108,9 @@
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Smooth Scrolling dan Sticky Navbar -->
-    <script>
-        // $(document).ready(function() {
-        //     $(window).scroll(function() {
-        //         if ($(this).scrollTop() > 50) {
-        //             $('.navbar-custom').addClass('navbar-scrolled');
-        //         } else {
-        //             $('.navbar-custom').removeClass('navbar-scrolled');
-        //         }
-        //     });
 
-        //     // Smooth scrolling untuk navigasi
-        //     $('a.nav-link').on('click', function(event) {
-        //         if (this.hash !== "") {
-        //             event.preventDefault();
-        //             const hash = this.hash;
-
-        //             $('html, body').animate({
-        //                 scrollTop: $(hash).offset().top - 70
-        //             }, 800);
-        //         }
-        //     });
-        // });
-    </script>
 
 </body>
+@yield('script')
 
 </html>

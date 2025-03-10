@@ -24,27 +24,26 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($cards as $card)
+                @foreach ($sortedCarts as $item)
                     <tr>
-                        <td>{{ $card->id }}</td>
-                        <td>{{ $card->product->name }}</td>
-                        <td>{{ $card->quantity }}</td>
-                        <td>{{ $card->material }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->product->name }}</td>
+                        <td>{{ $item->quantity }}</td>
+                        <td>{{ $item->material }}</td>
                         <td>
-                            @if ($card->status == 'pending')
-                                <span class="badge badge-warning">{{ ucfirst($card->status) }}</span>
-                            @elseif($card->status == 'approved')
-                                <span class="badge badge-success">{{ ucfirst($card->status) }}</span>
-                            @elseif($card->status == 'rejected')
-                                <span class="badge badge-danger">{{ ucfirst($card->status) }}</span>
+                            @if ($item->status == 'pending')
+                                <span class="badge badge-warning">{{ ucfirst($item->status) }}</span>
+                            @elseif($item->status == 'selesai')
+                                <span class="badge badge-success">{{ ucfirst($item->status) }}</span>
+                            @elseif($item->status == 'cancel')
+                                <span class="badge badge-danger">{{ ucfirst($item->status) }}</span>
                             @else
-                                <span class="badge badge-secondary">{{ ucfirst($card->status) }}</span>
+                                <span class="badge badge-primary">{{ ucfirst($item->status) }}</span>
                             @endif
                         </td>
-                        <td>{{ $card->created_at->format('d-m-Y H:i') }}</td>
+                        <td>{{ $item->created_at->format('d-m-Y H:i') }}</td>
                         <td>
-                            {{-- <a href="{{ route('cards.show', $card->id) }}" class="btn btn-info btn-sm">Detail</a> --}}
-                            <!-- Tambahkan aksi lain seperti Edit atau Hapus jika diperlukan -->
+                            <a href="{{ route('carts.show', $item->id) }}" class="btn btn-info btn-sm">Detail</a>
                         </td>
                     </tr>
                 @endforeach
@@ -54,7 +53,7 @@
 @endsection
 
 @section('scripts')
-    <!-- Inisialisasi DataTables -->
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#orders-table').DataTable({

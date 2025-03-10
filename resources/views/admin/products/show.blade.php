@@ -4,20 +4,17 @@
     <div class="container mt-5">
         <h2 class="mb-4">Detail Produk</h2>
 
-        <!-- Menampilkan Pesan Sukses -->
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
-        <!-- Informasi Produk -->
         <div class="card">
             <div class="card-header">
                 <h4>{{ $product->name }}</h4>
             </div>
             <div class="card-body">
-                <!-- Gambar Produk -->
                 @if ($product->image)
                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid"
                         style="max-width: 300px;">
@@ -26,7 +23,6 @@
                 @endif
 
                 <p><strong>Harga:</strong> Rp {{ number_format($product->price, 2) }}</p>
-
 
                 <p><strong>Deskripsi:</strong></p>
                 <p>{{ $product->description ?? 'Tidak ada deskripsi untuk produk ini.' }}</p>

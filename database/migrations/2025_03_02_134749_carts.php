@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('customer_email');
             $table->string('customer_phone');
             $table->integer('quantity');
-            $table->string('material');
+            $table->string('material')->nullable();
             $table->string('design_file')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();

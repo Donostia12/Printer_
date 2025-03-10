@@ -14,9 +14,16 @@ class CartController extends Controller
      */
     public function index()
     {
-        // Hanya admin yang dapat melihat daftar pemesanan
-        $cards = Carts::with('product')->get();
-        return view('admin.carts.index', compact('cards'));
+        $carts = Carts::with('product')->get();
+
+        $statusOrder = ['pending', 'proses', 'selesai', 'cancel'];
+
+        $sortedCarts = $carts->sortBy(function ($cart) use ($statusOrder) {
+            return array_search($cart->status, $statusOrder);
+        });
+
+
+        return view('admin.carts.index', compact('sortedCarts'));
     }
 
     /**
@@ -62,8 +69,24 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        $card = Carts::with('product')->findOrFail($id);
-        return view('cards.show', compact('card'));
+        $cartstatus = Carts::find($id);
+        switch ($cartstatus->status) {
+            case "pending":
+                $cartstatus->status = "proses";
+                break;
+            case "proses":
+                $cartstatus->status = "selesai";
+                break;
+            case "selesai":
+                $cartstatus->status = "cancel";
+                break;
+            default:
+                $cartstatus->status = "pending";
+                break;
+        }
+
+        $cartstatus->save();
+        return redirect()->back()->with('success', 'Testimonial Anda berhasil di update!');
     }
 
     /**
