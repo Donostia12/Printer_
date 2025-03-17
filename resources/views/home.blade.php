@@ -51,7 +51,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Navigasi -->
             <a class="carousel-control-prev" href="#carouselBanner" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -71,25 +70,24 @@
             <h2 class="text-center mb-5">Tentang Sari Print</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{ asset('images/tentang-kami.jpg') }}" class="img-fluid" alt="Tentang Kami">
+                    <img src="{{ asset('images/sari.png') }}" class="img-fluid" alt="Tentang Kami">
                 </div>
                 <div class="col-md-6">
-                    <p>Sari Print adalah perusahaan percetakan yang berfokus pada kualitas dan pelayanan terbaik. Dengan
-                        pengalaman lebih dari 10 tahun, kami menyediakan berbagai layanan percetakan mulai dari kartu nama,
-                        brosur, spanduk, hingga merchandise kustom. Kami berkomitmen untuk memberikan hasil cetakan yang
-                        memuaskan dan layanan yang ramah kepada setiap pelanggan.</p>
+                    <p>Sari Print adalah sebuah usaha yang menyediakan jasa percetakan dan adverting ,didirikan oleh I Gede
+                        Apri Gunawan yang awalnya Photocopy dan jasa print berlokasi di Br. Taman Sari, Kediri Tabanan
+                        selama 2 tahun. Toko Sari Print Pindah ke Jl. Ngurah Rai no 39 Br. Anyar, Kediri, Tabanan ditahun
+                        2020. Dari tahun 2020 sampai saat ini Sari Print dipimpin Ni Putu Sari Ratna Kumala sebagai Pemilik
+                        Usaha. Sari Print juga menyediakan pengadaan barang dan jasa Advertising, Media cetak promosi,
+                        Wedding Video & Photgarph, ATK, dan bahan dan jasa cetak lainnya</p>
                     <a href="#layanan" class="btn btn-primary mt-3">Jelajahi Layanan Kami</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Jenis Layanan -->
     <section class="section bg-light py-5" id="layanan">
         <div class="container">
             <h2 class="text-center mb-5">Layanan Kami</h2>
-
-            <!-- Looping tiap kategori -->
             @foreach ($categories as $category)
                 <div class="mb-5">
                     <h3 class="mb-4">{{ $category->name }}</h3>
@@ -115,9 +113,7 @@
     </section>
 
 
-    </section>
 
-    <!-- Testimoni Pelanggan -->
     <section class="section py-5" id="testimoni">
         <div class="container">
             <h2 class="text-center mb-5">Apa Kata Pelanggan Kami</h2>
@@ -153,54 +149,50 @@
         </div>
     </section>
 
-    <!-- Tautan Media Sosial -->
     <section class="section bg-light py-5" id="sosial">
         <div class="container text-center">
             <h2 class="mb-5">Ikuti Kami di Media Sosial</h2>
-            <a href="#" class="btn btn-primary btn-lg mx-2" target="_blank"><i class="fab fa-facebook-f"></i>
+            <a href="https://www.facebook.com/sariprint" class="btn btn-primary btn-lg mx-3" target="_blank"><i
+                    class="fab fa-facebook-f"></i>
                 Facebook</a>
-            <a href="#" class="btn btn-danger btn-lg mx-2" target="_blank"><i class="fab fa-instagram"></i>
+            <a href=" https://wa.me/6281237353794" class="btn btn-success btn-lg mx-3" target="_blank"><i
+                    class="fab fa-linkedin-in"></i>
+                Whatsapp</a>
+
+            <a href="https://www.instagram.com/dguns_print/?fbclid=IwY2xjawJFC9ZleHRuA2FlbQIxMAABHR06KtA6XSXWXsm4nJ9yQ_pgscCJsu8hOIazrAXB0wxXDSwp6cmb1QBeyg_aem_Y1w1qcS1yTj3uFiKm_nkZA"
+                class="btn btn-warning btn-lg mx-3" target="_blank"><i class="fab fa-instagram"></i>
                 Instagram</a>
-            <a href="#" class="btn btn-info btn-lg mx-2" target="_blank"><i class="fab fa-twitter"></i>
-                Twitter</a>
-            <a href="#" class="btn btn-dark btn-lg mx-2" target="_blank"><i class="fab fa-linkedin-in"></i>
-                LinkedIn</a>
         </div>
     </section>
 
-    <!-- Kontak Kami -->
     <section class="section py-5" id="kontak">
         <div class="container">
             <h2 class="text-center mb-5">Kontak Kami</h2>
             <div class="row">
                 <div class="col-md-6">
                     <h5>Alamat Kantor</h5>
-                    <p>Jalan Raya Nomor 123<br>Kota ABC, 12345</p>
+                    <p>Jalan Ngurah Rai 39, Banjar Anyar - Kediri,<br> Tabanan, Indonesia, Bali</p>
                     <h5>Telepon</h5>
-                    <p>(021) 123-4567</p>
+                    <p>081 2373 53794</p>
                     <h5>Email</h5>
-                    <p>info@sariprint.com</p>
+                    <p>sariprint01@gmail.com</p>
                 </div>
                 <div class="col-md-6">
                     <h5>Formulir Testimonial</h5>
                     <form action="{{ route('testimonial.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <!-- Nama -->
                         <div class="form-group">
                             <label for="inputName">Nama</label>
                             <input type="text" class="form-control" id="inputName" name="name"
                                 placeholder="Nama Anda" required>
                         </div>
 
-                        <!-- Deskripsi -->
                         <div class="form-group">
                             <label for="inputDesc">Deskripsi</label>
                             <textarea class="form-control" id="inputDesc" name="desc" rows="3" placeholder="Isi Testimonial Anda"
                                 required></textarea>
                         </div>
-
-                        <!-- Gambar -->
                         <div class="form-group">
                             <label for="inputImage">Unggah Foto</label>
                             <input type="file" class="form-control-file" id="inputImage" name="image"
@@ -209,18 +201,15 @@
                                 2MB.</small>
                         </div>
 
-                        <!-- Tombol Submit -->
                         <button type="submit" class="btn btn-primary">Kirim Testimonial</button>
                         <a href="{{ url('/') }}" class="btn btn-secondary">Batal</a>
                     </form>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Pemesanan -->
-    <section class="section bg-primary text-white py-5" id="pemesanan">
+    <section class="section bg-primary text-white py-5" id="pemesanan" style="background-color: #820a0a !important;">
         <div class="container">
             <h2 class="text-center mb-4">Pemesanan</h2>
             <p class="text-center">Ikuti langkah mudah untuk melakukan pemesanan produk kami.</p>

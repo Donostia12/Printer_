@@ -8,9 +8,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="mb-3">
-            <a href="{{ route('products.create') }}" class="btn btn-primary">Tambah Testimoni</a>
-        </div>
+
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -28,12 +26,14 @@
                         <td><img src="{{ asset('storage/' . $item->image) }}" alt="" srcset=""
                                 style="height: 75px; width: 75px"></td>
                         @if ($item->status == 'active')
-                            <td> <a href="{{ route('testimonial.status', $item->id) }}"
-                                    class="btn btn-success btn-sm">ON</a></td>
+                            <td> <a href="{{ route('testimonial.status', $item->id) }}" class="btn btn-success btn-sm">ON</a>
+                            </td>
                         @else
                             <td> <a href="{{ route('testimonial.status', $item->id) }}"
                                     class="btn btn-danger btn-sm">OFF</a></td>
                         @endif
+
+
                     </tr>
                 @endforeach
             </tbody>

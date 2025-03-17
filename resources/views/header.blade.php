@@ -9,7 +9,7 @@
 
     <style>
         .navbar-custom {
-            background-color: #004080;
+            background-color: #820a0a;
             transition: background-color 0.3s ease;
         }
 
@@ -25,7 +25,7 @@
 
         /* Mengubah warna navbar saat menggulir */
         .navbar-scrolled {
-            background-color: rgba(0, 64, 128, 0.9) !important;
+            background-color: #820a0a;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
@@ -62,9 +62,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <!-- Tambahkan logo jika ada -->
-                <!-- <img src="{{ asset('images/logo.png') }}" alt="Sari Printer"> -->
-                Sari Printer
+                <img src="{{ asset('images/logo_sari.png') }}" alt="" srcset="">
+
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
