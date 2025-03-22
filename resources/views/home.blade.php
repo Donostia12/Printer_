@@ -24,8 +24,8 @@
             <!-- Slide -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/Foto-Utama.jpg') }}" class="d-block w-100 img-fluid" alt="Banner 1"
-                        style="max-height: 500px;">
+                    <img src="{{ asset('images/wayan.jpg') }}" class="d-block w-100 img-fluid" alt="Banner 1"
+                        style="max-height: 600px;">
                     <div class="carousel-caption d-none d-md-block">
                         <h2>Selamat Datang di Sari Print</h2>
                         <p>Layanan percetakan terbaik untuk semua kebutuhan Anda.</p>
@@ -33,8 +33,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('images/Foto-Utama.jpg') }}" class="d-block w-100 img-fluid" alt="Banner 2"
-                        style="max-height: 500px;">
+                    <img src="{{ asset('images/wayan.jpg') }}" class="d-block w-100 img-fluid" alt="Banner 2"
+                        style="max-height: 600px;">
                     <div class="carousel-caption d-none d-md-block">
                         <h2>Ikuti kami di Sosial Media</h2>
                         <p>Silahkan Check Sosoal Media Kami! dan Check Testimonial kami</p>
@@ -42,8 +42,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('images/Foto-Utama.jpg') }}" class="d-block w-100 img-fluid" alt="Banner 3"
-                        style="max-height: 500px;">
+                    <img src="{{ asset('images/wayan.jpg') }}" class="d-block w-100 img-fluid" alt="Banner 3"
+                        style="max-height: 600px;">
                     <div class="carousel-caption d-none d-md-block">
                         <h2>Kualitas Terbaik</h2>
                         <p>Kami berkomitmen memberikan hasil cetakan terbaik untuk Anda.</p>

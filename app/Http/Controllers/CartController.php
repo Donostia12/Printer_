@@ -16,13 +16,14 @@ class CartController extends Controller
     {
         $carts = Carts::with('product')->get();
 
-        $statusOrder = ['pending', 'proses', 'selesai', 'cancel'];
+        $statusOrder = ['pending'];
 
         $sortedCarts = $carts->sortBy(function ($cart) use ($statusOrder) {
             return array_search($cart->status, $statusOrder);
         });
 
 
+        // return response()->json($carts);
         return view('admin.carts.index', compact('sortedCarts'));
     }
 
