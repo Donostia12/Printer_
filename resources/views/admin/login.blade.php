@@ -50,9 +50,7 @@
                     <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </form>
 
-                <p class="mt-3 text-center">
-                    <a href="{{ url('/') }}">← Kembali ke Beranda</a>
-                </p>
+
             </div>
         </div>
     </div>
