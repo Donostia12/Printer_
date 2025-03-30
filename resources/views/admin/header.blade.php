@@ -85,16 +85,17 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-shopping-cart"></i>
-                    <span>Cart</span>
+                    <span>Pesanan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Cart Pesanan</h6>
-                        <a class="collapse-item" href="{{ route('carts.index') }}">List Carts Pesanan</a>
+                        <h6 class="collapse-header">Pesanan</h6>
+                        <a class="collapse-item" href="{{ route('carts.index') }}">List Pesanan </a>
+                        <a class="collapse-item" href="{{ route('carts.completed') }}">List Pesanan Selesai</a>
+                        <a class="collapse-item" href="{{ route('carts.cancel') }}">List Pesanan cancel</a>
                     </div>
                 </div>
             </li>
-
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -119,18 +120,13 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-
-                    <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
-                            <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -148,10 +144,6 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
-
-
-                        <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -159,7 +151,6 @@
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('assets/img/undraw_profile.svg') }}">
                             </a>
-                            <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
 
@@ -175,9 +166,7 @@
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
                 <div class="container-fluid">
                     @yield('content')
                 </div>
@@ -187,9 +176,7 @@
 
 
         </div>
-        <!-- End of Page Wrapper -->
 
-        <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
@@ -231,7 +218,6 @@
         <!-- Core plugin JavaScript-->
         <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-        <!-- Custom scripts for all pages-->
         <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>

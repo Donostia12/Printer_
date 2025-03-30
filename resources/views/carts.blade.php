@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="container " style="margin-top: 100px;">
+        <div class="container" style="margin-top: 100px;">
             <h2 class="text-center mb-4">Formulir Pemesanan</h2>
 
             <!-- Menampilkan Pesan Error Validasi -->
@@ -17,7 +17,7 @@
             @endif
 
             <!-- Formulir Pemesanan -->
-            <form action="{{ route('carts.form.store') }}" method="POST" enctype="multipart/form-data">
+            <form id="orderForm" action="{{ route('carts.form.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <!-- Informasi Pelanggan -->
@@ -78,4 +78,28 @@
             </form>
         </div>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderForm = document.getElementById('orderForm');
+
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Apakah data yang Anda masukkan sudah sesuai?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, sudah sesuai',
+                    cancelButtonText: 'Periksa kembali'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        orderForm.submit();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

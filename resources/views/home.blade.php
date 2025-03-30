@@ -93,15 +93,16 @@
                     <h3 class="mb-4">{{ $category->name }}</h3>
                     <div class="row">
                         @foreach ($category->products as $product)
-                            <div class="col-md-4">
-                                <div class="card mb-4 shadow-sm">
+                            <div class="col-md-4 d-flex align-items-stretch">
+                                <div class="card mb-4 shadow-sm h-100">
                                     <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
                                         alt="{{ $product->name }}" style="height: 200px; object-fit: cover; width: 100%;">
-                                    <div class="card-body">
+                                    <div class="card-body d-flex flex-column">
                                         <h5 class="card-title">{{ $product->name }}</h5>
                                         <p class="card-text">{{ $product->description }}</p>
-                                        <a href="{{ route('carts.form') }}"
-                                            class="btn btn-outline-primary">Selengkapnya</a>
+                                        <a href="{{ route('carts.form') }}" class="btn btn-outline-primary mt-auto">
+                                            Pesan sekarang
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -170,8 +171,10 @@
             <h2 class="text-center mb-5">Kontak Kami</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <h5>Alamat Kantor</h5>
-                    <p>Jalan Ngurah Rai 39, Banjar Anyar - Kediri,<br> Tabanan, Indonesia, Bali</p>
+                    <h5>Alamat Kantor :</h5>
+                    <a href="https://maps.app.goo.gl/se9sNYQBYx7Hw6Yo9" target="_blank">
+                        <p>Jalan Ngurah Rai 39, Banjar Anyar - Kediri,<br> Tabanan, Indonesia, Bali</p>
+                    </a>
                     <h5>Telepon</h5>
                     <p>081 2373 53794</p>
                     <h5>Email</h5>

@@ -9,27 +9,49 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        $carts = Carts::with('product')->get();
+        $carts = Carts::with('product')
+            ->whereIn('status', ['proses', 'pending'])
+            ->get();
 
-        $statusOrder = ['pending'];
-
+        $statusOrder = ['proses', 'pending'];
         $sortedCarts = $carts->sortBy(function ($cart) use ($statusOrder) {
-            return array_search($cart->status, $statusOrder);
+            return array_search($cart->status, $statusOrder, true);
         });
+        $sortedCarts = $sortedCarts->values();
 
-
-        // return response()->json($carts);
         return view('admin.carts.index', compact('sortedCarts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function showCompletedOrders()
+    {
+        $carts = Carts::with('product')
+            ->where('status', 'selesai')
+            ->get();
+
+        $sortedCarts = $carts->sortBy(function ($cart) {
+            return array_search($cart->status, ['selesai'], true);
+        });
+        $sortedCarts = $sortedCarts->values();
+        return view('admin.carts.selesai', compact('sortedCarts'));
+    }
+
+    public function showCanceledOrders()
+    {
+
+        $carts = Carts::with('product')
+            ->where('status', 'cancel')
+            ->get();
+
+        $sortedCarts = $carts->sortBy(function ($cart) {
+            return array_search($cart->status, ['cancel'], true);
+        });
+
+        $sortedCarts = $sortedCarts->values();
+        return view('admin.carts.selesai', compact('sortedCarts'));
+    }
 
     public function create()
     {
@@ -37,12 +59,8 @@ class CartController extends Controller
         return view('carts.create', compact('products'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // Validasi data input
         $validatedData = $request->validate([
             'product_id'  => 'required|exists:products,id',
             'quantity'    => 'required|integer|min:1',
@@ -65,9 +83,7 @@ class CartController extends Controller
         return redirect()->route('cards.show', $card->id)->with('success', 'Pemesanan Anda berhasil dibuat!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show($id)
     {
         $cartstatus = Carts::find($id);
@@ -75,24 +91,34 @@ class CartController extends Controller
             case "pending":
                 $cartstatus->status = "proses";
                 break;
-            case "proses":
-                $cartstatus->status = "selesai";
-                break;
-            case "selesai":
-                $cartstatus->status = "cancel";
-                break;
+
             default:
                 $cartstatus->status = "pending";
                 break;
         }
 
         $cartstatus->save();
-        return redirect()->back()->with('success', 'Testimonial Anda berhasil di update!');
+        return redirect()->back()->with('success', 'Status pesanan Anda berhasil di update!');
+    }
+    public function success($id)
+    {
+        $cartstatus = Carts::find($id);
+
+        $cartstatus->status = "selesai";
+
+
+        $cartstatus->save();
+        return redirect()->back()->with('success', 'Status pesanan Anda berhasil di update!');
+    }
+    public function cancel($id)
+    {
+        $cartstatus = Carts::find($id);
+        $cartstatus->status = "cancel";
+
+        $cartstatus->save();
+        return redirect()->back()->with('success', 'Status pesanan Anda berhasil di update!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //

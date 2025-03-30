@@ -24,7 +24,7 @@
                     <th>Email</th>
                     <th>Image</th>
                     <th>tanggal</th>
-                    <th>Aksi</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -52,19 +52,6 @@
                         <td><img src="{{ asset('storage/' . $item->design_file) }}" alt="" srcset=""
                                 style="height: 100px; width: 100px;"></td>
                         <td> {{ \Carbon\Carbon::parse($item->created_at->format('d-m-Y H:i'))->format('d M Y') }}</td>
-                        <td>
-                            <a href="{{ route('carts.show', $item->id) }}" class="btn btn-info btn-sm">Update Status</a>
-
-                            <a href="{{ route('cart.cancel', $item->id) }}"
-                                class="btn btn-danger btn-sm mt-1 btn-alert-cancel">
-                                Cancel
-                            </a>
-
-                            <a href="{{ route('cart.success', $item->id) }}"
-                                class="btn btn-success btn-sm mt-1 btn-alert-success">
-                                Selesai
-                            </a>
-                        </td>
 
                     </tr>
                 @endforeach
@@ -82,48 +69,6 @@
                 // "language": {
                 //     "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Indonesian.json"
                 // }
-            });
-        });
-    </script>
-    -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.querySelectorAll('.btn-alert-cancel').forEach(function(button) {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const href = this.getAttribute('href');
-
-                Swal.fire({
-                    title: 'Anda yakin ingin cancel?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Ya, cancel',
-                    cancelButtonText: 'Tidak'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = href;
-                    }
-                });
-            });
-        });
-
-
-        document.querySelectorAll('.btn-alert-success').forEach(function(button) {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const href = this.getAttribute('href');
-
-                Swal.fire({
-                    title: 'Anda yakin order ini selesai?',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonText: 'Ya, selesai',
-                    cancelButtonText: 'Tidak'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = href;
-                    }
-                });
             });
         });
     </script>

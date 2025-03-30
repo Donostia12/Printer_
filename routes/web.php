@@ -30,4 +30,8 @@ Route::middleware([AdminMiddlerware::class])->group(function () {
     Route::resource('carts', CartController::class);
     Route::get('admin/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
     Route::get('testimonial/{id}', [TestimonialController::class, 'status'])->name('testimonial.status');
+    Route::get('cart/completed', [CartController::class, 'showCompletedOrders'])->name('carts.completed');
+    Route::get('cart/cancel', [CartController::class, 'showCanceledOrders'])->name('carts.cancel');
+    Route::get('cart/cancel/{id}', [CartController::class, 'cancel'])->name('cart.cancel');
+    Route::get('cart/success/{id}', [CartController::class, 'success'])->name('cart.success');
 });
